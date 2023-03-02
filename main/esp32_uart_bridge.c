@@ -71,7 +71,15 @@ static void bridge_task(void *arg)
     uart_config_t uart_config = {
         .baud_rate = UBRIDGE_UART_BAUD_RATE,
         .data_bits = UART_DATA_8_BITS,
+    #if CONFIG_UBRIDGE_UART_PARITY_NONE
+        .parity    = UART_PARITY_DISABLE,
+    #endif
+    #if CONFIG_UBRIDGE_UART_PARITY_EVEN
         .parity    = UART_PARITY_EVEN,
+    #endif
+    #if CONFIG_UBRIDGE_UART_PARITY_ODD
+        .parity    = UART_PARITY_ODD,
+    #endif
         .stop_bits = UART_STOP_BITS_1,
         .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
         .source_clk = UART_SCLK_DEFAULT,

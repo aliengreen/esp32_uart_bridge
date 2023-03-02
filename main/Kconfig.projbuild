@@ -19,6 +19,25 @@ menu "ESP32 Uart Bridge Configuration"
         help
             UART communication speed for Modbus example.
 
+    choice UBRIDGE_UART_PARITY
+        prompt "UART parity"
+        default UBRIDGE_UART_PARITY_NONE
+        help
+            This option sets parity settings for the current UART configuration.
+
+            - The "None" parity disabled.
+            - The "Even" parity even.
+            - The "Odd" parity odd.
+
+        config UBRIDGE_UART_PARITY_NONE
+            bool "None"
+        config UBRIDGE_UART_PARITY_EVEN
+            bool "Even"
+        config UBRIDGE_UART_PARITY_ODD
+            bool "Odd"
+
+    endchoice
+
     config UBRIDGE_UART_RXD
         int "UART RXD pin number"
         range ENV_GPIO_RANGE_MIN 25

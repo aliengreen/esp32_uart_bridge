@@ -74,13 +74,15 @@ The initial flashing can be done by using other methods, see [this guide](https:
 ### Configure the project
 
 Use the command below to configure project using Kconfig menu as showed in the table above.
-The default Kconfig values can be changed such as: `UBRIDGE_UART_BAUD_RATE`, `UBRIDGE_UART_PORT_NUM` (Refer to Kconfig file).
+The default Kconfig values can be changed such as: `UBRIDGE_UART_BAUD_RATE`, `UBRIDGE_UART_PARITY`,  `UBRIDGE_UART_PORT_NUM` (Refer to Kconfig file).
 
 ```
 idf.py menuconfig
 ```
 
 > NOTE: The default baud rate is `57600` and port number `0`
+>
+> WARING: The parity setting by default selected `none`. If you are going to flash STM32 using the ST serial bootloader you MUST select `even` parity. 
 
 ### Build and Flash
 
