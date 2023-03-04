@@ -52,6 +52,11 @@
 
 #define BUF_SIZE                  512
 
+#define DVAL2(x) #x
+#define DVAL(x) DVAL2(x)
+#define DO_PRAGMA(x) _Pragma (#x)
+#define PRINT_DIRECTIVE(x) DO_PRAGMA(message ( #x " = " DVAL(x)))
+PRINT_DIRECTIVE(CONFIG_UBRIDGE_UART_PARITY)
 
 /* ----------------------------------------------------------- */
 
@@ -66,20 +71,13 @@ static void bridge_task(void *arg)
 
     ESP_ERROR_CHECK(usb_serial_jtag_driver_install(&usb_serial_config));
 
+
     /* Configure parameters of an UART driver,
      * communication pins and install the driver */
     uart_config_t uart_config = {
         .baud_rate = UBRIDGE_UART_BAUD_RATE,
         .data_bits = UART_DATA_8_BITS,
-    #if CONFIG_UBRIDGE_UART_PARITY_NONE
-        .parity    = UART_PARITY_DISABLE,
-    #endif
-    #if CONFIG_UBRIDGE_UART_PARITY_EVEN
-        .parity    = UART_PARITY_EVEN,
-    #endif
-    #if CONFIG_UBRIDGE_UART_PARITY_ODD
-        .parity    = UART_PARITY_ODD,
-    #endif
+        .parity = CONFIG_UBRIDGE_UART_PARITY,
         .stop_bits = UART_STOP_BITS_1,
         .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
         .source_clk = UART_SCLK_DEFAULT,

@@ -38,6 +38,12 @@ menu "ESP32 Uart Bridge Configuration"
 
     endchoice
 
+    config UBRIDGE_UART_PARITY
+        int
+        default 0 if UBRIDGE_UART_PARITY_NONE
+        default 2 if UBRIDGE_UART_PARITY_EVEN
+        default 3 if UBRIDGE_UART_PARITY_ODD
+
     config UBRIDGE_UART_RXD
         int "UART RXD pin number"
         range ENV_GPIO_RANGE_MIN 25
