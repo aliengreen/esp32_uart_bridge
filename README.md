@@ -89,6 +89,7 @@ idf.py menuconfig
 Build the project and flash it to the board:
 
 ```
+idf.py set-target esp32c3
 idf.py build
 idf.py -p PORT flash
 ```
