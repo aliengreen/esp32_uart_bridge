@@ -9,7 +9,7 @@ menu "ESP32 Uart Bridge Configuration"
         range 0 1 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C2 || IDF_TARGET_ESP32H2
         default 1 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C2 || IDF_TARGET_ESP32H2
         help
-            UART communication port number for the example.
+            UART communication port number.
             See UART documentation for available port numbers.
 
     config UBRIDGE_UART_BAUD_RATE
@@ -17,7 +17,7 @@ menu "ESP32 Uart Bridge Configuration"
         range 1200 115200
         default 115200
         help
-            UART communication speed for Modbus example.
+            UART communication speed.
 
     choice UBRIDGE_UART_PARITY
         prompt "UART parity"
@@ -61,10 +61,10 @@ menu "ESP32 Uart Bridge Configuration"
             about available pin numbers for UART.
 
     config UBRIDGE_TASK_STACK_SIZE
-        int "UART echo example task stack size"
+        int "Bridge task stack size"
         range 1024 16384
         default 2048
         help
-            Defines stack size for UART echo example. Insufficient stack size can cause crash.
+            Defines stack size for UART bridge. Insufficient stack size can cause crash.
 
 endmenu
