@@ -137,16 +137,16 @@ static void bridge_task(void *arg) {
   while (true) {
 
     int len =
-        usb_serial_jtag_read_bytes(data, BUF_SIZE, 0 / portTICK_PERIOD_MS);
+        usb_serial_jtag_read_bytes(data, BUF_SIZE, 500 / portTICK_PERIOD_MS);
     if (len > 0) {
       uart_write_bytes(UBRIDGE_UART_PORT_NUM, (const char *)data, len);
       uart_flush(UBRIDGE_UART_PORT_NUM);
     }
 
     len = uart_read_bytes(UBRIDGE_UART_PORT_NUM, data, (BUF_SIZE),
-                          0 / portTICK_PERIOD_MS);
+                          500 / portTICK_PERIOD_MS);
     if (len > 0) {
-      usb_serial_jtag_write_bytes(data, len, 0 / portTICK_PERIOD_MS);
+      usb_serial_jtag_write_bytes(data, len, 500 / portTICK_PERIOD_MS);
       usb_serial_jtag_ll_txfifo_flush();
     }
   }
