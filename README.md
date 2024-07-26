@@ -82,7 +82,7 @@ idf.py menuconfig
 
 > NOTE: The default baud rate is `57600` and port number `0`
 >
-> WARING: The parity setting by default selected `none`. If you are going to flash STM32 using the ST serial bootloader you MUST select `even` parity. 
+> WARNING: The parity setting by default selected `none`. If you are going to flash STM32 using the ST serial bootloader you MUST select `even` parity. 
 
 ### Build and Flash
 
